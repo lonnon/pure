@@ -1,43 +1,32 @@
 # Pure
 
-> Pretty, minimal and fast ZSH prompt
-
-<img src="screenshot.png" width="864">
-
+> Pretty, minimal and fast ZSH prompt, blended with personal touches
 
 ## Overview
 
-Most prompts are cluttered, ugly and slow. I wanted something visually pleasing that stayed out of my way.
+Most prompts are cluttered, ugly and slow. I wanted something visually
+pleasing that stayed out of my way. Sindre Sorhus did most of the work
+with Pure, but there's no way I can leave a prompt config alone without
+customizng the bajeezus out of it.
 
 ### Why?
 
-- Comes with the perfect prompt character.
-  Author went through the whole Unicode range to find it.
 - Shows `git` branch and whether it's dirty (with a `*`).
 - Indicates when you have unpushed/unpulled `git` commits with up/down arrows. *(Check is done asynchronously!)*
 - Prompt character turns red if the last command didn't exit with `0`.
-- Command execution time will be displayed if it exceeds the set threshold.
+- Command execution time will be displayed if it exceeds a set threshold.
 - Username and host only displayed when in an SSH session.
-- Shows the current path in the title and the [current folder & command](screenshot-title-cmd.png) when a process is running.
+- Shows the current path in the title and the when a process is running.
 - Support VI-mode indication by reverse prompt symbol (Zsh 5.3+).
-- Makes an excellent starting point for your own custom prompt.
+- Makes an excellent starting point for your own custom prompt. (Yes, it did!
+  Thanks, Sindre!)
 
 
 ## Install
 
-Can be installed with `npm` or manually. Requires Git 2.0.0+ and ZSH 5.2+. Older versions of ZSH are known to work, but they are **not** recommended.
+Requires Git 2.0.0+ and ZSH 5.2+. Older versions of ZSH are known to work, but they are **not** recommended.
 
-### npm
-
-```console
-$ npm install --global pure-prompt
-```
-
-That's it. Skip to [Getting started](#getting-started).
-
-### Manually
-
-1. Either…
+1. Do one of the following:
   - Clone this repo
   - add it as a submodule, or
   - just download [`pure.zsh`](pure.zsh) and [`async.zsh`](async.zsh)
@@ -45,6 +34,7 @@ That's it. Skip to [Getting started](#getting-started).
 2. Symlink `pure.zsh` to somewhere in [`$fpath`](https://www.refining-linux.org/archives/46-ZSH-Gem-12-Autoloading-functions.html) with the name `prompt_pure_setup`.
 
 3. Symlink `async.zsh` in `$fpath` with the name `async`.
+
 
 #### Example
 
@@ -106,105 +96,6 @@ PURE_CMD_MAX_EXEC_TIME=10
 prompt pure
 ```
 
-
-## Tips
-
-In the screenshot you see Pure running in [Hyper](https://hyper.is) with the [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy) theme and Menlo font.
-
-The [Tomorrow Night Eighties](https://github.com/chriskempson/tomorrow-theme) theme with the [Droid Sans Mono](https://www.fontsquirrel.com/fonts/droid-sans-mono) font (15pt) is also a [nice combination](https://github.com/sindresorhus/pure/blob/95ee3e7618c6e2162a1e3cdac2a88a20ac3beb27/screenshot.png).<br>
-*Just make sure you have anti-aliasing enabled in your terminal.*
-
-To have commands colorized as seen in the screenshot, install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
-
-
-## Integration
-
-### [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
-1. Set `ZSH_THEME=""` in your `.zshrc` to disable oh-my-zsh themes.
-2. Follow the Pure [Install](#install) instructions.
-3. Do not enable the following (incompatible) plugins: `vi-mode`, `virtualenv`.
-
-**NOTE:** `oh-my-zsh` overrides the prompt so Pure must be activated *after* `source $ZSH/oh-my-zsh.sh`.
-
-### [prezto](https://github.com/sorin-ionescu/prezto)
-
-Pure is bundled with Prezto. No need to install it.
-
-Add `prompt pure` to your `~/.zpreztorc`.
-
-### [zim](https://github.com/Eriner/zim)
-
-Pure is bundled with Zim. No need to install it.
-
-Set `zprompt_theme='pure'` in `~/.zimrc`.
-
-### [antigen](https://github.com/zsh-users/antigen)
-
-Update your `.zshrc` file with the following two lines (order matters). Do not use the `antigen theme` function.
-
-```sh
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
-```
-
-### [antibody](https://github.com/getantibody/antibody)
-
-Update your `.zshrc` file with the following two lines (order matters):
-
-```sh
-antibody bundle mafredri/zsh-async
-antibody bundle sindresorhus/pure
-```
-
-### [zplug](https://github.com/zplug/zplug)
-
-Update your `.zshrc` file with the following two lines:
-
-```sh
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-```
-
-### [zplugin](https://github.com/zdharma/zplugin)
-
-Update your `.zshrc` file with the following two lines (order matters):
-
-```sh
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-```
-
-## FAQ
-
-There are currently no FAQs.
-
-See [FAQ Archive](https://github.com/sindresorhus/pure/wiki/FAQ-Archive) for previous FAQs.
-
-## Ports
-
-- **ZSH**
-	- [therealklanni/purity](https://github.com/therealklanni/purity) - More compact current working directory, important details on the main prompt line, and extra Git indicators.
- 	- [intelfx/pure](https://github.com/intelfx/pure) - Solarized-friendly colors, highly verbose, and fully async Git integration.
-	- [dfurnes/purer](https://github.com/dfurnes/purer) - Compact single-line prompt with built-in Vim-mode indicator.
-- **Bash**
-	- [sapegin/dotfiles](https://github.com/sapegin/dotfiles) - [Prompt](https://github.com/sapegin/dotfiles/blob/dd063f9c30de7d2234e8accdb5272a5cc0a3388b/includes/bash_prompt.bash) and [color theme](https://github.com/sapegin/dotfiles/tree/master/color) for Terminal.app.
-- **Fish**
-	- [brandonweiss/pure.fish](https://github.com/brandonweiss/pure.fish) - Pure-inspired prompt for Fish. Not intended to have feature parity.
-	- [rafaelrinaldi/pure](https://github.com/rafaelrinaldi/pure) - Support for bare Fish and various framework ([Oh-My-Fish](https://github.com//oh-my-fish/oh-my-fish), [Fisherman](https://github.com//fisherman/fisherman), and [Wahoo](https://github.com//bucaran/wahoo)).
-- **Rust**
-	- [xcambar/purs](https://github.com/xcambar/purs) - Pure-inspired prompt in Rust.
-- **Go**
-	- [talal/mimir](https://github.com/talal/mimir) - Pure-inspired prompt in Go with Kubernetes and OpenStack cloud support. Not intended to have feature parity.
-
-
-## Team
-
-[![Sindre Sorhus](https://github.com/sindresorhus.png?size=100)](http://sindresorhus.com) | [![Mathias Fredriksson](https://github.com/mafredri.png?size=100)](https://github.com/mafredri)
----|---
-[Sindre Sorhus](https://github.com/sindresorhus) | [Mathias Fredriksson](https://github.com/mafredri)
-
-
 ## License
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT © [Lonnon Foster](https://github.com/lonnon)
