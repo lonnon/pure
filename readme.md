@@ -1,4 +1,4 @@
-# Pure
+# Purée
 
 > Pretty, minimal and fast ZSH prompt, blended with personal touches
 
